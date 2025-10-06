@@ -1,10 +1,13 @@
 from flask import Flask, render_template, redirect, url_for
 import sqlite3
+from form import RegisterForm
+from flask_bootstrap import Bootstrap5
 
 app = Flask(__name__)
+app.config["SECRET_KEY"] = "xcvxkbv45y3747w34yzb"
+Bootstrap5(app)
 
-
-@app.route("/")
+@app.route("/", methods=["GET", "POST"])
 def home():
     con = sqlite3.connect('instance/cafes.db')
     cur = con.cursor()
@@ -29,6 +32,12 @@ def home():
         })
 
     return render_template("index.html", cafe_data=cafe_data)
+
+@app.route("/register", methods=["GET", "POST"])
+def register():
+    form = RegisterForm()
+
+    return render_template("register.html", form=form)
 
 if __name__ == "__main__":
     app.run(debug=True)
