@@ -1,12 +1,5 @@
 .nav-link {
-  color: #ffffff;
-.nav-link:hover {
-color: #ffcc00;
-}
-
-@media (max-width: 300px) {
-.nav-link:hover {
-    color: #00bfff;
-}
-}
+    color: white !important;
+    font-weight: bold;
+    margin-right: 50px;
 }

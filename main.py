@@ -1,6 +1,6 @@
 from flask import Flask, render_template, redirect, url_for
 import sqlite3
-from form import RegisterForm
+from form import RegisterForm, LoginFarm
 from flask_bootstrap import Bootstrap5
 
 app = Flask(__name__)
@@ -38,6 +38,11 @@ def register():
     form = RegisterForm()
 
     return render_template("register.html", form=form)
+
+@app.route("/login", methods=["GET", "POST"])
+def login():
+    form = LoginFarm()
+    return render_template("login.html", form=form)
 
 if __name__ == "__main__":
     app.run(debug=True)

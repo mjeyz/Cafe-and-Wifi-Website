@@ -10,8 +10,7 @@
         href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
         rel="stylesheet"
         integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB"
-        crossorigin="anonymous"
-    >
+        crossorigin="anonymous">
 
     <!-- Custom CSS -->
     <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
@@ -37,9 +36,9 @@
 </svg>
 
 <!-- NAVBAR -->
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark px-3" style="position: absolute; top: 0; left: 0; width: 100%; z-index: 2;">
+<nav class="navbar navbar-expand-lg px-3 text-light" style="position: absolute; top: 0; left: 0; width: 100%; z-index: 2;">
     <a class="navbar-brand" href="#">
-        <img src="{{ url_for('static', filename='assets/img/logo-light.png') }}" alt="Logo" height="40">
+        <img src="{{ url_for('static', filename='assets/img/logo-light.png') }}" class="me-2 align-middle" alt="Cafe and Wifi website logo, stylized coffee cup with Wi-Fi signal lines above, used as site branding in the navigation bar" height="50">
     </a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
             aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -48,12 +47,13 @@
     <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
         <ul class="navbar-nav">
             <li class="nav-item"><a class="nav-link active" href="#">Home</a></li>
-            <li class="nave-item"><a class="nav-link" href="{{ url_for('register') }}">Login</a></li>
+            <li class="nav-item"><a class="nav-link" href="{{ url_for('register') }}">Login</a></li>
             <li class="nav-item"><a class="nav-link" href="#">About</a></li>
             <li class="nav-item"><a class="nav-link" href="#">Services</a></li>
-            <li class="nav-item"><a class="nav-link disabled" href="#">Disabled</a></li>
+            <li class="nav-item"><a class="nav-link" href="#">Disabled</a></li>
         </ul>
-    </div>
+        </div>
+    </nav>
 </nav>
 
 <!-- HERO SECTION -->
