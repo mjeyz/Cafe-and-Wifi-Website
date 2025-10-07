@@ -49,12 +49,11 @@
             <li class="nav-item"><a class="nav-link active" href="{{ url_for('home')}}">Home</a></li>
             <li class="nav-item"><a class="nav-link" href="{{ url_for('register') }}">Register</a></li>
             <li class="nav-item"><a class="nav-link" href="{{ url_for('login') }}">Login</a></li>
-            <li class="nav-item"><a class="nav-link" href="#">About</a></li>
-            <li class="nav-item"><a class="nav-link" href="#">Contact</a></li>
+            <li class="nav-item"><a class="nav-link" href="{{ url_for('about') }}">About</a></li>
+            <li class="nav-item"><a class="nav-link" href="{{ url_for('contact') }}">Contact</a></li>
         </ul>
         </div>
     </nav>
-</nav>
 
 <!-- HERO SECTION -->
 <section class="bg-dark text-light text-center position-relative">
@@ -69,8 +68,8 @@
             Enjoy free and reliable Wi-Fi, plenty of sockets, and cozy seating to get your work done in comfort.
         </p>
         <div class="mt-4">
-            <button class="btn btn-outline-info btn-lg me-3 fw-bold">Explore Now</button>
-            <button class="btn btn-outline-light btn-lg">Learn More</button>
+            <button class="btn btn-outline-info btn-lg me-3 fw-bold" href="{{ url_for('register') }}">Register</button>
+            <button class="btn btn-outline-light btn-lg" href="{{ url_for('login') }}">Login</button>
         </div>
     </div>
 </section>

@@ -44,5 +44,15 @@ def login():
     form = LoginFarm()
     return render_template("login.html", form=form)
 
+@app.route("/about")
+def about():
+    return render_template("about.html")
+
+@app.route("/contact", methods=["GET", "POST"])
+def contact():
+    return render_template("contact.html")
+
+
+
 if __name__ == "__main__":
     app.run(debug=True)
