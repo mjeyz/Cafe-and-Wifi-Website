@@ -2,9 +2,12 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Cafe and Wifi</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cafe and Wifi - Discover London's Best Work-Friendly Spaces</title>
+    
+    <!-- Meta description for SEO -->
+    <meta name="description" content="Discover work and study-friendly cafes, restaurants, libraries, and hotel lobbies across London with free Wi-Fi, power sockets, and comfortable seating.">
+    
     <!-- Bootstrap CSS -->
     <link
         href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
@@ -20,63 +23,98 @@
 </head>
 
 <body class="bg-light">
+    <!-- SVG ICONS -->
+    <svg xmlns="http://www.w3.org/2000/svg" style="display: none">
+        <!-- Keep your existing SVG icons -->
+        <symbol id="instagram" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M12 2.2c3.2 0 3.584.012 4.85.07 1.17.056 1.97.24 2.43.41a4.92 4.92 0 0 1 1.77 1.02 4.92 4.92 0 0 1 1.02 1.77c.17.46.354 1.26.41 2.43.058 1.266.07 1.65.07 4.85s-.012 3.584-.07 4.85c-.056 1.17-.24 1.97-.41 2.43a4.92 4.92 0 0 1-1.02 1.77 4.92 4.92 0 0 1-1.77 1.02c-.46.17-1.26.354-2.43.41-1.266.058-1.65.07-4.85.07s-3.584-.012-4.85-.07c-1.17-.056-1.97-.24-2.43-.41a4.92 4.92 0 0 1-1.77-1.02 4.92 4.92 0 0 1-1.02-1.77c-.17-.46-.354-1.26-.41-2.43C2.212 15.784 2.2 15.4 2.2 12s.012-3.584.07-4.85c.056-1.17.24-1.97.41-2.43A4.92 4.92 0 0 1 3.7 2.95a4.92 4.92 0 0 1 1.77-1.02c.46-.17 1.26-.354 2.43-.41C8.416 2.212 8.8 2.2 12 2.2zM12 0C8.736 0 8.332.012 7.052.07c-1.276.058-2.15.24-2.91.51A7.07 7.07 0 0 0 .58 2.14a7.07 7.07 0 0 0-1.56 1.56c-.27.76-.452 1.634-.51 2.91C.012 8.332 0 8.736 0 12c0 3.264.012 3.668.07 4.948.058 1.276.24 2.15.51 2.91a7.07 7.07 0 0 0 1.56 1.56c.76.27 1.634.452 2.91.51C8.332 23.988 8.736 24 12 24s3.668-.012 4.948-.07c1.276-.058 2.15-.24 2.91-.51a7.07 7.07 0 0 0 1.56-1.56c.27-.76.452-1.634.51-2.91.058-1.28.07-1.684.07-4.948s-.012-3.668-.07-4.948c-.058-1.276-.24-2.15-.51-2.91a7.07 7.07 0 0 0-1.56-1.56c-.76-.27-1.634-.452-2.91-.51C15.668.012 15.264 0 12 0zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zm0 10.162a3.999 3.999 0 1 1 0-7.998 3.999 3.999 0 0 1 0 7.998zm7.844-10.406a1.44 1.44 0 1 1-2.88 0 1.44 1.44 0 0 1 2.88 0z"/>
+        </symbol>
+        <symbol id="facebook" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M22.675 0h-21.35C.595 0 0 .592 0 1.326v21.348C0 23.408.595 24 1.326 24H12.82v-9.294H9.692V11.01h3.127V8.413c0-3.1 1.893-4.788 4.659-4.788 1.325 0 2.463.099 2.797.143v3.24l-1.918.001c-1.504 0-1.797.715-1.797 1.763v2.313h3.587l-.467 3.696h-3.12V24h6.116C23.406 24 24 23.408 24 22.674V1.326C24 .592 23.406 0 22.675 0"/>
+        </symbol>
+    </svg>
 
-<!-- SVG ICONS -->
-<svg xmlns="http://www.w3.org/2000/svg" style="display: none">
-    <symbol id="instagram" viewBox="0 0 24 24" fill="currentColor">
-        <path
-            d="M12 2.2c3.2 0 3.584.012 4.85.07 1.17.056 1.97.24 2.43.41a4.92 4.92 0 0 1 1.77 1.02 4.92 4.92 0 0 1 1.02 1.77c.17.46.354 1.26.41 2.43.058 1.266.07 1.65.07 4.85s-.012 3.584-.07 4.85c-.056 1.17-.24 1.97-.41 2.43a4.92 4.92 0 0 1-1.02 1.77 4.92 4.92 0 0 1-1.77 1.02c-.46.17-1.26.354-2.43.41-1.266.058-1.65.07-4.85.07s-3.584-.012-4.85-.07c-1.17-.056-1.97-.24-2.43-.41a4.92 4.92 0 0 1-1.77-1.02 4.92 4.92 0 0 1-1.02-1.77c-.17-.46-.354-1.26-.41-2.43C2.212 15.784 2.2 15.4 2.2 12s.012-3.584.07-4.85c.056-1.17.24-1.97.41-2.43A4.92 4.92 0 0 1 3.7 2.95a4.92 4.92 0 0 1 1.77-1.02c.46-.17 1.26-.354 2.43-.41C8.416 2.212 8.8 2.2 12 2.2zM12 0C8.736 0 8.332.012 7.052.07c-1.276.058-2.15.24-2.91.51A7.07 7.07 0 0 0 .58 2.14a7.07 7.07 0 0 0-1.56 1.56c-.27.76-.452 1.634-.51 2.91C.012 8.332 0 8.736 0 12c0 3.264.012 3.668.07 4.948.058 1.276.24 2.15.51 2.91a7.07 7.07 0 0 0 1.56 1.56c.76.27 1.634.452 2.91.51C8.332 23.988 8.736 24 12 24s3.668-.012 4.948-.07c1.276-.058 2.15-.24 2.91-.51a7.07 7.07 0 0 0 1.56-1.56c.27-.76.452-1.634.51-2.91.058-1.28.07-1.684.07-4.948s-.012-3.668-.07-4.948c-.058-1.276-.24-2.15-.51-2.91a7.07 7.07 0 0 0-1.56-1.56c-.76-.27-1.634-.452-2.91-.51C15.668.012 15.264 0 12 0zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zm0 10.162a3.999 3.999 0 1 1 0-7.998 3.999 3.999 0 0 1 0 7.998zm7.844-10.406a1.44 1.44 0 1 1-2.88 0 1.44 1.44 0 0 1 2.88 0z"
-        />
-    </symbol>
-    <symbol id="facebook" viewBox="0 0 24 24" fill="currentColor">
-        <path
-            d="M22.675 0h-21.35C.595 0 0 .592 0 1.326v21.348C0 23.408.595 24 1.326 24H12.82v-9.294H9.692V11.01h3.127V8.413c0-3.1 1.893-4.788 4.659-4.788 1.325 0 2.463.099 2.797.143v3.24l-1.918.001c-1.504 0-1.797.715-1.797 1.763v2.313h3.587l-.467 3.696h-3.12V24h6.116C23.406 24 24 23.408 24 22.674V1.326C24 .592 23.406 0 22.675 0"
-        />
-    </symbol>
-</svg>
+    <!-- NAVBAR -->
+    <header>
+        <nav class="navbar navbar-expand-lg px-3 text-light" style="position: absolute; top: 0; left: 0; width: 100%; z-index: 2;">
+            <a class="navbar-brand" href="{{ url_for('home') }}">
+                <img src="{{ url_for('static', filename='assets/img/logo-light.png') }}" 
+                     class="me-2 align-middle" 
+                     alt="Cafe and Wifi logo - Coffee cup with Wi-Fi signal" 
+                     height="50"
+                     loading="eager">
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation menu">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item"><a class="nav-link active" aria-current="page" href="{{ url_for('home')}}">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{{ url_for('register') }}">Register</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{{ url_for('login') }}">Login</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{{ url_for('about') }}">About</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{{ url_for('contact') }}">Contact</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
 
-<!-- NAVBAR -->
-<nav class="navbar navbar-expand-lg px-3 text-light" style="position: absolute; top: 0; left: 0; width: 100%; z-index: 2;">
-    <a class="navbar-brand" href="#">
-        <img src="{{ url_for('static', filename='assets/img/logo-light.png') }}" class="me-2 align-middle" alt="Cafe and Wifi website logo, stylized coffee cup with Wi-Fi signal lines above, used as site branding in the navigation bar" height="50">
-    </a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
-        <ul class="navbar-nav">
-            <li class="nav-item"><a class="nav-link active" href="{{ url_for('home')}}">Home</a></li>
-            <li class="nav-item"><a class="nav-link" href="{{ url_for('register') }}">Register</a></li>
-            <li class="nav-item"><a class="nav-link" href="{{ url_for('login') }}">Login</a></li>
-            <li class="nav-item"><a class="nav-link" href="{{ url_for('about') }}">About</a></li>
-            <li class="nav-item"><a class="nav-link" href="{{ url_for('contact') }}">Contact</a></li>
-        </ul>
+    <!-- MAIN CONTENT -->
+    <main>
+        <!-- HERO SECTION -->
+        <section class="bg-dark text-light text-center position-relative" aria-labelledby="hero-heading">
+            <img src="{{ url_for('static', filename='assets/img/hero.jpg') }}" 
+                 alt="People working on laptops in a modern cafe with coffee on the table"
+                 class="img-fluid w-100 opacity-50" 
+                 style="height: 60vh; object-fit: cover;"
+                 loading="eager">
+            <div class="position-absolute top-50 start-50 translate-middle px-3">
+                <h1 id="hero-heading" class="display-4 fw-bold text-white mb-3">London</h1>
+                <p class="lead text-white-50 mx-auto" style="max-width: 700px;">
+                    Discover work and study-friendly cafes, restaurants, libraries, and hotel lobbies across London. 
+                    Enjoy free and reliable Wi-Fi, plenty of sockets, and cozy seating to get your work done in comfort.
+                </p>
+                <div class="mt-4">
+                    <a class="btn btn-outline-info btn-lg me-3 fw-bold" href="{{ url_for('register') }}">
+                        Register Now
+                    </a>
+                    <a class="btn btn-outline-light btn-lg" href="{{ url_for('login') }}">
+                        Login
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- You can add more sections here -->
+        <!-- Example: Featured Cafes Section -->
+        <!--
+        <section class="py-5">
+            <div class="container">
+                <h2 class="text-center mb-5">Featured Work Spaces</h2>
+                <div class="row">
+                    <!-- Cafe cards would go here --
+                </div>
+            </div>
+        </section>
+        -->
+    </main>
+
+    <!-- FOOTER (Optional - you can add this) -->
+    <!--
+    <footer class="bg-dark text-white py-4 mt-5">
+        <div class="container text-center">
+            <p class="mb-0">&copy; 2023 Cafe and Wifi. All rights reserved.</p>
         </div>
-    </nav>
+    </footer>
+    -->
 
-<!-- HERO SECTION -->
-<section class="bg-dark text-light text-center position-relative">
-    <img src="{{ url_for('static', filename='assets/img/hero.jpg') }}" 
-         alt="Cafe and Wifi Hero Image"
-         class="img-fluid w-100 opacity-50" 
-         style="height: 60vh; object-fit: cover;">
-    <div class="position-absolute top-50 start-50 translate-middle">
-        <h1 class="display-4 fw-bold text-white mb-3">London</h1>
-        <p class="lead text-white-50 mx-auto" style="max-width: 700px;">
-            Discover work and study-friendly cafes, restaurants, libraries, and hotel lobbies across London. 
-            Enjoy free and reliable Wi-Fi, plenty of sockets, and cozy seating to get your work done in comfort.
-        </p>
-        <div class="mt-4">
-            <button class="btn btn-outline-info btn-lg me-3 fw-bold" href="{{ url_for('register') }}">Register</button>
-            <button class="btn btn-outline-light btn-lg" href="{{ url_for('login') }}">Login</button>
-        </div>
-    </div>
-</section>
-
-<!-- Bootstrap JS -->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-ENjdO4Dr2bkBIFxQpeo5UzHGL1+7Hzp6uOZp6bU91Z5oL4yD3f5sbg1zYtJ0R8BX"
-        crossorigin="anonymous"></script>
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-ENjdO4Dr2bkBIFxQpeo5UzHGL1+7Hzp6uOZp6bU91Z5oL4yD3f5sbg1zYtJ0R8BX"
+            crossorigin="anonymous"></script>
+    
+    <!-- Optional: Custom JS -->
+    <!-- <script src="{{ url_for('static', filename='js/script.js') }}"></script> -->
 </body>
 </html>
