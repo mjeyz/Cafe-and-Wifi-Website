@@ -23,7 +23,7 @@
 
 <body>
     <!-- NAVBAR -->
-    <nav class="navbar navbar-expand-lg px-3 text-light" style="position: absolute; top: 0; left: 0; width: 100%; z-index: 2;">
+    <nav class="navbar navbar-expand-lg px-3 text-dark bg-black" style="position: absolute; top: 0; left: 0; width: 100%; z-index: 2;">
         <a class="navbar-brand" href="{{ url_for('home') }}">
             <img src="{{ url_for('static', filename='assets/img/logo-light.png') }}" 
                  class="me-2 align-middle" 
@@ -46,36 +46,7 @@
         </div>
     </nav>
 
-    <!-- MAIN CONTENT -->
-    <main>
-        <!-- HERO SECTION -->
-        <section class="bg-dark text-light text-center position-relative" aria-labelledby="hero-heading">
-            <img src="{{ url_for('static', filename='assets/img/hero.jpg') }}"
-                 alt="People working on laptops in a modern cafe with coffee on the table"
-                 class="img-fluid w-100 opacity-50"
-                 style="height: 60vh; object-fit: cover;"
-                 loading="eager">
-            <div class="position-absolute top-50 start-50 translate-middle px-3">
-                <h1 id="hero-heading" class="display-4 fw-bold text-white mb-3">London</h1>
-                <p class="lead text-white-50 mx-auto" style="max-width: 700px;">
-                    Discover work and study-friendly cafes, restaurants, libraries, and hotel lobbies across London.
-                    Enjoy free and reliable Wi-Fi, plenty of sockets, and cozy seating to get your work done in comfort.
-                </p>
-                <div class="mt-4">
-                    <a class="btn btn-outline-info btn-lg me-3 fw-bold" href="{{ url_for('register') }}">
-                        Register Now
-                    </a>
-                    <a class="btn btn-outline-light btn-lg" href="{{ url_for('login') }}">
-                        Login
-                    </a>
-                </div>
-            </div>
-        </section>
 
-        {% block content %}
-        <!-- Page-specific content will go here in child templates -->
-        {% endblock %}
-    </main>
 
     {% block scripts %}
     <!-- Bootstrap JS -->

@@ -3,3 +3,11 @@
     font-weight: bold;
     margin-right: 20px;
 }
+
+.masthead {
+    width: 100%;
+    height: 500px;              /* fixed height */
+    background-size: cover;     /* fills width & height */
+    background-position: center;
+    background-repeat: no-repeat;
+}
