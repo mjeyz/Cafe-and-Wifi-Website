@@ -6,8 +6,8 @@
 
 .masthead {
     width: 100%;
-    height: 500px;              /* fixed height */
-    background-size: cover;     /* fills width & height */
+    height: 500px;
+    background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
 }

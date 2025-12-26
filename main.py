@@ -42,6 +42,10 @@ def register():
 @app.route("/login", methods=["GET", "POST"])
 def login():
     form = LoginFarm()
+    email = form.email.data
+    password = form.password.data
+
+    print(email, password)
     return render_template("login.html", form=form)
 
 @app.route("/about")

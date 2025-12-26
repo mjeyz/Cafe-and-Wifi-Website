@@ -1,17 +1,15 @@
-{% include 'header.html'%}
+{% include 'header.html' %}
 {% from 'bootstrap5/form.html' import render_form %}
 {% block content %}
 
-
-
     <main class="my-5">
-    <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-md-10 col-lg-8 col-xl-8 mt-5">
-                {{ render_form(form) }}
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-md-10 col-lg-8 col-xl-8 mt-5">
+                    {{ render_form(form) }}
+                </div>
             </div>
         </div>
-    </div>
     </main>
 
 {% endblock %}
