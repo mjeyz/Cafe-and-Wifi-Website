@@ -1,15 +1,16 @@
 {% include 'header.html' %}
-{% from 'bootstrap5/form.html' import render_form %}
-{% block content %}
+{% from "bootstrap5/form.html" import render_form %}
 
-    <main class="my-5">
-        <div class="container">
-            <div class="row justify-content-center">
-                <div class="col-md-10 col-lg-8 col-xl-8 mt-5">
-                    {{ render_form(form) }}
-                </div>
-            </div>
-        </div>
-    </main>
+<body class="login-form-body">
 
-{% endblock %}
+<div class="login-image">
+    <h1>Welcome back</h1>
+
+        {{ render_form(form) }}
+
+</div>
+
+</body>
+{% include 'footer.html' %}
+
+
