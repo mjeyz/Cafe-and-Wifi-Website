@@ -4,8 +4,6 @@
     box-sizing: border-box;
 }
 
-
-
 .nav-link {
     color: white !important;
     font-weight: bold;
@@ -21,13 +19,14 @@
 }
 
 .login-image {
-   width: 500px;
+    width: 500px;
     margin-top: 100px;
     justify-content: center;
 }
 
 .left {
 }
+
 .login-form-body {
     background-color: #dfeeee;
 }
