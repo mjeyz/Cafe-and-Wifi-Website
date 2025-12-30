@@ -1,17 +1,17 @@
 {% from "bootstrap5/form.html" import render_form %}
 {% block content %}
-{% include 'header.html' %}
+    {% include 'header.html' %}
 
-<main class="my-5">
-  <div class="container">
-    <div class="row">
-      <div class="col-lg-8 col-md-10 mx-auto mt-5">
-        <!-- render your registration form here -->
-        {{ render_form(form, novalidate=True, button_map={"submit": "primary"})}}
-      </div>
-    </div>
-  </div>
-</main>
+    <main class="my-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-md-10 mx-auto mt-5">
+                    <!-- render your registration form here -->
+                    {{ render_form(form, novalidate=True, button_map={"submit": "primary"}) }}
+                </div>
+            </div>
+        </div>
+    </main>
 
-{% include 'footer.html' %}
+    {% include 'footer.html' %}
 {% endblock %}
