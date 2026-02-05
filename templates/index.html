@@ -1,55 +1,47 @@
 {% include 'header.html' %}
 
-<!-- Header Section -->
 <header class="masthead"
-        style="background-image: url('{{ url_for('static', filename='assets/img/hero.jpg') }}'); height: 500px">
+        style="background-image: url('{{ url_for('static', filename='assets/img/hero.jpg') }}'); height: 500px; background-size: cover; background-position: center;">
     <div class="container position-relative px-4 px-lg-5">
         <div class="row gx-4 gx-lg-5 justify-content-center">
             <div class="col-md-10 col-lg-8 col-xl-7">
-                <div class="page-heading text-center">
-                    <h1>Cafe Explorer</h1>
-                    <span class="subheading">Find the best cafés around you</span>
+                <div class="site-heading text-center" style="padding: 150px 0; color: white; text-shadow: 2px 2px 4px #000;">
+                    <h1>Find Your Perfect Coffee & Wifi Spot</h1>
+                    <span class="subheading">Discover cafes with great coffee, reliable wifi, comfortable seating, and the perfect ambiance for work or relaxation. Check real-time availability and prices</span>
                 </div>
             </div>
         </div>
     </div>
 </header>
 
+<div class="album py-5 bg-body-tertiary">
+    <div class="container">
+        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+            {% for cafe in cafe_data %}
+                <div class="col">
+                    <div class="card shadow-sm h-100">
+                        <img src="{{ cafe['img_url'] }}" width="100%" height="225" style="object-fit: cover;" alt="{{ cafe['name'] }}"/>
+                        <div class="card-body">
+                            <h5 class="card-title"><strong>{{ cafe["name"] }}</strong></h5>
+                            <p class="card-text">
+                                <small class="text-muted"><i class="fas fa-map-marker-alt"></i> {{ cafe["location"] }}</small><br>
+                                <strong>Price:</strong> {{ cafe["coffee_price"] }}<br>
+                                <strong>Seats:</strong> {{ cafe["seats"] }}<br>
+                                <strong>Calls:</strong> {% if cafe["can_take_calls"] %} ✅ Yes {% else %} ❌ No {% endif %}
+                            </p>
 
-<div class="album py-5 bg-body-tertiary"></div>
-<div class="container">
-    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
-
-        {% for cafe in cafe_data %}
-            <div class="col">
-                <div class="card shadow-sm">
-                    <img src="{{ cafe['img_url'] }}" width="100%" height="225" alt=""/>
-                    <div class="card-body">
-                        <p class="card-text">
-                            <small class="text-body-secondary">Location: {{ cafe["location"] }}</small><br>
-                            <strong>{{ cafe["name"] }}</strong>
-                        </p>
-                        <div class="d-flex justify-content-between align-items-center">
-                            <div class="btn-group">
-                                <button
-                                        type="button"
-                                        class="btn btn-sm btn-outline-secondary"
-                                >
-                                    View
-                                </button>
-                                <button
-                                        type="button"
-                                        class="btn btn-sm btn-outline-secondary"
-                                >
-                                    Edit
-                                </button>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div class="btn-group">
+                                    <a href="{{ url_for('cafe', cafe_id=cafe['id']) }}" class="btn btn-sm btn-outline-primary">View</a>
+                                </div>
+                                <small class="text-body-secondary">Added 9 mins ago</small>
                             </div>
-                            <small class="text-body-secondary">9 mins</small>
                         </div>
                     </div>
                 </div>
-            </div>
-        {% endfor %}
+            {% endfor %}
+        </div>
     </div>
 </div>
+
 {% include 'footer.html' %}

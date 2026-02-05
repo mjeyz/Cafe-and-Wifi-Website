@@ -1,0 +1,41 @@
+{% include 'header.html' %}
+
+<header class="masthead" style="background-image: url('{{ url_for('static', filename='assets/img/hero.jpg') }}');">
+	<div class="container position-relative px-4 px-lg-5">
+		<div class="row gx-4 gx-lg-5 justify-content-center">
+			<div class="col-md-10 col-lg-8 col-xl-7">
+				<div class="site-heading text-center" style="padding: 100px 0; color: white; text-shadow: 2px 2px 4px #000;">
+					<h1>{{ cafe.name }}</h1>
+					<span class="subheading">{{ cafe.location }}</span>
+				</div>
+			</div>
+		</div>
+	</div>
+</header>
+
+<main class="py-5">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-8">
+				<img src="{{ cafe.img_url }}" alt="{{ cafe.name }}" class="img-fluid rounded mb-4" style="object-fit:cover; max-height:420px; width:100%;">
+				<p><strong>Price:</strong> {{ cafe.coffee_price }}</p>
+				<p><strong>Seats:</strong> {{ cafe.seats }}</p>
+				<p><strong>Wifi:</strong> {% if cafe.has_wifi %} ✅ Yes {% else %} ❌ No {% endif %}</p>
+				<p><strong>Power outlets:</strong> {% if cafe.has_sockets %} ✅ Yes {% else %} ❌ No {% endif %}</p>
+				<p><strong>Toilet:</strong> {% if cafe.has_toilet %} ✅ Yes {% else %} ❌ No {% endif %}</p>
+				<p><strong>Can take calls:</strong> {% if cafe.can_take_calls %} ✅ Yes {% else %} ❌ No {% endif %}</p>
+			</div>
+			<div class="col-md-4">
+				<div class="card p-3">
+					<h5>Location</h5>
+					<p>{{ cafe.location }}</p>
+					{% if cafe.map_url %}
+						<a href="{{ cafe.map_url }}" class="btn btn-primary" target="_blank">Open in Maps</a>
+					{% endif %}
+				</div>
+			</div>
+		</div>
+	</div>
+</main>
+
+{% include 'footer.html' %}
