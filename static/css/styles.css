@@ -1,6 +1,6 @@
 * {
     margin: 0;
-    pading: 0;
+    padding: 0;
     box-sizing: border-box;
 }
 
@@ -12,21 +12,53 @@
 
 .masthead {
     width: 100%;
+    min-height: 40vh;
     height: 500px;
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
+    display: flex;
+    align-items: center;
+    color: white;
 }
 
 .login-image {
-    width: 500px;
-    margin-top: 100px;
-    justify-content: center;
+    max-width: 100%;
+    height: auto;
+    margin-top: 2rem;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
 }
 
-.left {
-}
+/* helper left class removed/unused */
 
 .login-form-body {
     background-color: #dfeeee;
+}
+
+/* Cards */
+.card:hover {
+    transform: translateY(-4px);
+    transition: transform 200ms ease-in-out;
+}
+
+.site-heading h1 {
+    font-size: 2rem;
+}
+.site-heading .subheading {
+    display: block;
+    margin-top: .75rem;
+    font-size: 1rem;
+    opacity: .95;
+}
+
+@media (min-width: 768px) {
+    .site-heading h1 { font-size: 2.7rem; }
+    .site-heading .subheading { font-size: 1.1rem; }
+}
+
+@media (max-width: 576px) {
+    .masthead { height: 320px; }
+    .site-heading { padding: 80px 0; }
 }
