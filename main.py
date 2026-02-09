@@ -1,11 +1,32 @@
+import psycopg2
 from flask import Flask, render_template, redirect, url_for, flash, request
 import sqlite3
 from form import RegisterForm, LoginFarm
 from flask_bootstrap import Bootstrap5
+from flask_login import LoginManager, UserMixin, login_user, logout_user, current_user
+from werkzeug.security import generate_password_hash, check_password_hash
 
 app = Flask(__name__)
 app.config["SECRET_KEY"] = "xcvxkbv45y3747w34yzb"
 Bootstrap5(app)
+
+login_manager = LoginManager()
+login_manager.init_app(app)
+login_manager.login_view = "login"
+
+conn = psycopg2.connect(host="localhost", database="cafe", user="postgres", password=9992, port=5432)
+
+
+class User(UserMixin):
+    def __init__(self, id, name, email, password):
+        self.id = id,
+        self.name = name,
+        self.email = email,
+        self.password = password
+
+@login_manager.user_loader
+def load_user(id):
+    pass
 
 @app.route("/", methods=["GET", "POST"])
 def home():
@@ -36,9 +57,25 @@ def home():
 @app.route("/register", methods=["GET", "POST"])
 def register():
     form = RegisterForm()
+
+    name = form.name.data
+    email = form.email.data
+    password = form.password.data
+
+    hashed_password = generate_password_hash(password, method="pbkdf2:sha256", salt_length=8)
+    print(hashed_password)
+
     if form.validate_on_submit():
-        # Demo behavior: show a flash and redirect to home. In a real app you'd save the user.
-        flash("Registration successful (demo).", "success")
+        cur = conn.cursor()
+        cur.execute("SELECT * FROM users WHERE email = %s", (email,))
+
+        if cur.fetchone():
+            flash("User already exists please login instead.", "danger")
+            return redirect("login")
+        else:
+            cur.execute("INSERT INTO users(name, email, password) VALUES(%s, %s, %s)", (name, email, hashed_password))
+            conn.commit()
+            flash("Registration successful (demo).", "success")
         return redirect(url_for('home'))
 
     return render_template("register.html", form=form)
