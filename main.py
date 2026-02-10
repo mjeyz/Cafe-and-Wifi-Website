@@ -25,8 +25,16 @@ class User(UserMixin):
         self.password = password
 
 @login_manager.user_loader
-def load_user(id):
-    pass
+def load_user(user_id):
+    cur = conn.cursor()
+    cur.execute("SELECT * FROM users WHERE id = %s", (user_id,))
+
+    user = cur.fetchone()
+
+    if user:
+        return User(id=user[0], name=user[1], email=user[2], password=user[3])
+    return None
+
 
 @app.route("/", methods=["GET", "POST"])
 def home():
@@ -73,25 +81,53 @@ def register():
         if cur.fetchone():
             flash("User already exists please login instead.", "danger")
             return redirect("login")
-        else:
-            cur.execute("INSERT INTO users(name, email, password) VALUES(%s, %s, %s)", (name, email, hashed_password))
-            conn.commit()
-            flash("Registration successful (demo).", "success")
+
+        cur.execute("INSERT INTO users(name, email, password) VALUES(%s, %s, %s)", (name, email, hashed_password))
+        conn.commit()
+        flash("Registration successful (demo).", "success")
+
+        cur.execute("SELECT id FROM users WHERE email = %s", (email,))
+        user_id = cur.fetchone()
+
+        user = User(id=user_id, name=name, email=email, password=hashed_password)
+        login_user(user)
         return redirect(url_for('home'))
 
-    return render_template("register.html", form=form)
+    return render_template("auth/register.html", form=form)
 
 @app.route("/login", methods=["GET", "POST"])
 def login():
     form = LoginFarm()
     email = form.email.data
     password = form.password.data
-    if form.validate_on_submit():
-        # Demo login behavior: accept any credentials for now
-        flash(f"Logged in as {email} (demo)", "success")
-        return redirect(url_for('home'))
 
-    return render_template("login.html", form=form)
+    if form.validate_on_submit():
+        try:
+            cur = conn.cursor()
+            cur.execute("SELECT * FROM users WHERE email = %s", (email,))
+            user = cur.fetchone()
+
+            if not user:
+                flash("This email is not exist please register first.", "danger")
+                return redirect(url_for("auth/login"))
+
+            if not check_password_hash(user[2], password):
+                flash("Incorrect password.", "danger")
+                return redirect(url_for("auth/login"))
+
+            user_obj = User(id=user[0], name=user[1], email=user[2], password=user[3])
+            login_user(user_obj)
+            flash(f"Logged in as {email} (demo)", "success")
+        except conn.Error as error:
+            flash("Connection error: {}".format(error), "danger")
+        else:
+            conn.close()
+            return redirect(url_for('home'))
+        finally:
+            return render_template("auth/login.html", form=form)
+
+
+    return render_template("auth/login.html", form=form)
 
 @app.route("/about")
 def about():
