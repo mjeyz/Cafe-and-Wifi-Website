@@ -62,11 +62,11 @@ def register():
     email = form.email.data
     password = form.password.data
 
-    if password:
-        hashed_password = generate_password_hash(password, method="pbkdf2:sha256", salt_length=8)
-        print(hashed_password)
 
     if form.validate_on_submit():
+
+        hashed_password = generate_password_hash(password, method="pbkdf2:sha256", salt_length=8)
+
         cur = conn.cursor()
         cur.execute("SELECT * FROM users WHERE email = %s", (email,))
 
