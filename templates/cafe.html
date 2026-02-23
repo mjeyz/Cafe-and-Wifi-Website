@@ -1,6 +1,6 @@
 {% include 'partials/header.html' %}
 
-<header class="masthead" style="background-image: url('{{ url_for('static', filename='assets/img/hero.jpg') }}');">
+<header class="masthead" style="background-image: url('{{ cafe.img_url }}');">
 	<div class="container position-relative px-4 px-lg-5">
 		<div class="row gx-4 gx-lg-5 justify-content-center">
 			<div class="col-md-10 col-lg-8 col-xl-7">
@@ -17,13 +17,12 @@
 	<div class="container">
 		<div class="row">
 			<div class="col-md-8">
-				<img src="{{ cafe.img_url }}" alt="{{ cafe.name }}" class="img-fluid rounded mb-4" style="object-fit:cover; max-height:420px; width:100%;">
-				<p><strong>Price:</strong> {{ cafe.coffee_price }}</p>
-				<p><strong>Seats:</strong> {{ cafe.seats }}</p>
-				<p><strong>Wifi:</strong> {% if cafe.has_wifi %} ✅ Yes {% else %} ❌ No {% endif %}</p>
-				<p><strong>Power outlets:</strong> {% if cafe.has_sockets %} ✅ Yes {% else %} ❌ No {% endif %}</p>
-				<p><strong>Toilet:</strong> {% if cafe.has_toilet %} ✅ Yes {% else %} ❌ No {% endif %}</p>
-				<p><strong>Can take calls:</strong> {% if cafe.can_take_calls %} ✅ Yes {% else %} ❌ No {% endif %}</p>
+				<p class="card p-3"><strong>Price:</strong> {{ cafe.coffee_price }}</p>
+				<p  class="card p-3"><strong>Seats:</strong> {{ cafe.seats }}</p>
+				<p class="card p-3"><strong>Wifi:</strong> {% if cafe.has_wifi %} ✅ Yes {% else %} ❌ No {% endif %}</p>
+				<p class="card p-3"><strong>Power outlets:</strong> {% if cafe.has_sockets %} ✅ Yes {% else %} ❌ No {% endif %}</p>
+				<p class="card p-3"><strong>Toilet:</strong> {% if cafe.has_toilet %} ✅ Yes {% else %} ❌ No {% endif %}</p>
+				<p class="card p-3"><strong>Can take calls:</strong> {% if cafe.can_take_calls %} ✅ Yes {% else %} ❌ No {% endif %}</p>
 			</div>
 			<div class="col-md-4">
 				<div class="card p-3">

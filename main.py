@@ -3,7 +3,7 @@ from flask import Flask, render_template, redirect, url_for, flash, request
 import sqlite3
 from form import RegisterForm, LoginFarm
 from flask_bootstrap import Bootstrap5
-from flask_login import LoginManager, UserMixin, login_user, logout_user, current_user
+from flask_login import LoginManager, UserMixin, login_user, logout_user, current_user, login_required
 from werkzeug.security import generate_password_hash, check_password_hash
 
 app = Flask(__name__)
@@ -13,8 +13,6 @@ Bootstrap5(app)
 login_manager = LoginManager()
 login_manager.init_app(app)
 login_manager.login_view = "login"
-
-conn = psycopg2.connect(host="localhost", database="cafe", user="postgres", password=9992, port=5432)
 
 
 class User(UserMixin):
@@ -26,13 +24,22 @@ class User(UserMixin):
 
 @login_manager.user_loader
 def load_user(user_id):
-    cur = conn.cursor()
-    cur.execute("SELECT * FROM users WHERE id = %s", (user_id,))
+    try:
+        conn = psycopg2.connect(host="localhost", database="cafe", user="postgres", password=9992, port=5432)
 
-    user = cur.fetchone()
+        cur = conn.cursor()
+        cur.execute("""
+                    SELECT u.id, u.name, u.email, u.password
+                       FROM users u 
+                       WHERE id = %s
+                    """, (user_id,))
 
-    if user:
-        return User(id=user[0], name=user[1], email=user[2], password=user[3])
+        user = cur.fetchone()
+
+        if user:
+            return User(id=user[0], name=user[1], email=user[2], password=user[3])
+    except psycopg2.Error as e:
+        print(f"There was a problem connecting to the database: {e}")
     return None
 
 
@@ -60,10 +67,12 @@ def home():
             "coffee_price": cafe[10]
         })
 
-    return render_template("index.html", cafe_data=cafe_data)
+    return render_template("index.html", cafe_data=cafe_data, current_user=current_user)
 
 @app.route("/register", methods=["GET", "POST"])
 def register():
+    conn = psycopg2.connect(host="localhost", database="cafe", user="postgres", password=9992, port=5432)
+
     form = RegisterForm()
 
     name = form.name.data
@@ -98,36 +107,53 @@ def register():
 @app.route("/login", methods=["GET", "POST"])
 def login():
     form = LoginFarm()
-    email = form.email.data
-    password = form.password.data
+    conn = psycopg2.connect(host="localhost", database="cafe", user="postgres", password=9992, port=5432)
 
     if form.validate_on_submit():
+        email = form.email.data
+        password = form.password.data
+
         try:
             cur = conn.cursor()
-            cur.execute("SELECT * FROM users WHERE email = %s", (email,))
+            cur.execute(
+                "SELECT id, name, email, password FROM users WHERE email = %s",
+                (email,)
+            )
             user = cur.fetchone()
 
             if not user:
-                flash("This email is not exist please register first.", "danger")
-                return redirect(url_for("auth/login"))
+                flash("This email does not exist. Please register first.", "danger")
+                return redirect(url_for("auth.login"))
 
-            if not check_password_hash(user[2], password):
+            if not check_password_hash(user[3], password):
                 flash("Incorrect password.", "danger")
-                return redirect(url_for("auth/login"))
+                return redirect(url_for("auth.login"))
 
-            user_obj = User(id=user[0], name=user[1], email=user[2], password=user[3])
+            user_obj = User(
+                id=user[0],
+                name=user[1],
+                email=user[2],
+                password=user[3]
+            )
+
             login_user(user_obj)
-            flash(f"Logged in as {email} (demo)", "success")
-        except conn.Error as error:
-            flash("Connection error: {}".format(error), "danger")
-        else:
-            conn.close()
-            return redirect(url_for('home'))
-        finally:
-            return render_template("auth/login.html", form=form)
+            flash(f"Logged in as {email}", "success")
+            return redirect(url_for("home"))
 
+        except psycopg2.Error as error:
+            conn.rollback()
+            flash(f"Database error: {error}", "danger")
+
+        finally:
+            cur.close()
 
     return render_template("auth/login.html", form=form)
+
+@app.route("/logout")
+def logout():
+    logout_user()
+    flash("You have been successfully logged out.", "success")
+    return redirect(url_for("home"))
 
 @app.route("/about")
 def about():
@@ -163,7 +189,7 @@ def cafe(cafe_id):
         "coffee_price": cafe[10]
     }
 
-    return render_template("cafe.html", cafe=cafe_data)
+    return render_template("cafe.html", cafe=cafe_data, current_user=current_user)
 
 
 
